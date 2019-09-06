@@ -10,5 +10,15 @@ package jogodecartas;
  * @author Aluno
  */
 public class Maco {
+    Baralho baralhoMaco;
+    Carta[] cartaMaco;
     
+    public Maco(){
+        cartaMaco = new Carta[baralhoMaco.resto()];
+        baralhoMaco.embaralhar();
+    }
+    
+    public Carta[] mostrarCartasMaco(){
+        return cartaMaco;
+    }
 }

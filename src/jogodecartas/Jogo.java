@@ -7,7 +7,7 @@ public class Jogo {
     private final Scanner entrada = new Scanner(System.in);
     private final Baralho BARALHO;
     private Jogador[] jogadores;
-
+    
     public Jogo() {
         BARALHO = new Baralho();
         BARALHO.mostrarBaralho();
@@ -18,6 +18,7 @@ public class Jogo {
     public void iniciarJogo() {
 
         jogadores = new Jogador[2];
+        
         
         for (int i = 0; i < jogadores.length; i++) {
             System.out.print("Jogador " + (i+1) + ", digite seu nome: ");
@@ -36,7 +37,11 @@ public class Jogo {
             jogadore.mostrarCartas();
         }
     }
-
+    
+}
+ 
+    
+    /*
     public static void main(String[] args) {
         Jogo executar = new Jogo();
         executar.iniciarJogo();
@@ -44,3 +49,4 @@ public class Jogo {
         executar.mostrarCartas();
     }
 }
+*/

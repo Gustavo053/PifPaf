@@ -5,14 +5,15 @@ import java.util.Random;
 public class Baralho {
 
     private final Carta[] CARTAS;
+    private Carta[] NAIPESALVO, FACESALVA;
     private final Random ALEATORIO;
-    private int contador;
+    private int contador, qtdCartas;
 
     public Baralho() {
         ALEATORIO = new Random();
         CARTAS = new Carta[52];
-        String[] face = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J",
-            "Q", "K"};
+        String[] face = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
+            "J", "Q", "K"};
         String[] naipe = {"copas", "espadas", "ouros", "paus"};
 
         int cont = 0;
@@ -24,6 +25,7 @@ public class Baralho {
     }
 
     public void embaralhar() {
+        
         System.out.println("\t\tEMBARALHANDO\n");
         int num, num2;
         Carta temp;
@@ -38,15 +40,22 @@ public class Baralho {
 
     public Carta[] distribuirCartas(int qtdCartas) {
         System.out.println("------------DISTRIBUINDO BARALHO-----------------");
-
+        this.qtdCartas = qtdCartas;
+            
         Carta[] cartasJogador = new Carta[qtdCartas];
 
         for (int i = 0; i < qtdCartas; i++) {
             cartasJogador[i] = CARTAS[contador];
             contador++;
         }
-
+        
         return cartasJogador;
+    }
+    
+    public int resto(){
+        Carta[] restoCarta = new Carta[52 - contador];
+        
+        return restoCarta.length;
     }
 
     public void mostrarBaralho() {
