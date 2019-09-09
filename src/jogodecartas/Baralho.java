@@ -52,11 +52,20 @@ public class Baralho {
         return cartasJogador;
     }
     
-    public int resto(){
-        Carta[] restoCarta = new Carta[52 - contador];
+    public int resto(int resto){
+        Carta[] restoCarta = new Carta[(CARTAS.length - contador) - resto];
         
         return restoCarta.length;
     }
+    
+    public Carta retornaCarta(){
+        Carta ultimaCarta = new Carta("Sem face", "Sem naipe");
+        for(int i = 0; i < CARTAS.length; i++){
+            ultimaCarta = CARTAS[CARTAS.length - contador];
+        }
+        return ultimaCarta;
+    }
+    
 
     public void mostrarBaralho() {
         System.out.println("------------APRESENTANDO BARALHO-----------------");
