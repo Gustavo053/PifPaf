@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class Baralho {
 
-    private final Carta[] CARTAS;
+    private static Carta[] CARTAS; 
     private Carta[] NAIPESALVO, FACESALVA;
     private final Random ALEATORIO;
-    private int contador, qtdCartas;
+    private static int contador, qtdCartas;
 
     public Baralho() {
         ALEATORIO = new Random();
@@ -51,18 +51,6 @@ public class Baralho {
         
         return cartasJogador;
     }
-    
-    public int resto(int resto){
-        Carta[] restoCarta = new Carta[(CARTAS.length - contador) - resto];
-        
-        return restoCarta.length;
-    }
-    
-    public Carta retornaCarta(){
-        System.out.println("Carta puxada: " + CARTAS[++contador]);
-        return CARTAS[contador];
-    }
-    
 
     public void mostrarBaralho() {
         System.out.println("------------APRESENTANDO BARALHO-----------------");
@@ -70,4 +58,11 @@ public class Baralho {
             System.out.println(carta.toString());
         }
     }
+    
+    public static Carta puxarCarta(){
+        System.out.println("Carta puxada: " + CARTAS[++contador]);
+        
+        return CARTAS[contador];
+    }
+   
 }

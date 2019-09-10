@@ -7,7 +7,6 @@ public class Jogo {
     private final Scanner entrada = new Scanner(System.in);
     private final Baralho BARALHO;
     private Jogador[] jogadores;
-    private int puxar;
     
     public Jogo() {
         BARALHO = new Baralho();
@@ -47,8 +46,21 @@ public class Jogo {
             switch(opcao){
                 case 1:
                     jogadore.puxarCartaMaco();
+                    System.out.println("Digite o índice da carta de descarte: ");
+                    int indice1 = entrada.nextInt();
+                    jogadore.descartarCarta(indice1);
+                    System.out.println("------------------------------");
+                    mostrarCartas();
+                    System.out.println("------------------------------");
                     break;
                 case 2:
+                    jogadore.puxarCartaLixo();
+                    System.out.println("Digite o índice da carta de descarte: ");
+                    int indice2 = entrada.nextInt();
+                    jogadore.descartarCarta(indice2);
+                    System.out.println("------------------------------");
+                    mostrarCartas();
+                    System.out.println("------------------------------");
                     break;
                 default:
                     System.out.println("Por favor, digite uma opção válida");

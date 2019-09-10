@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Jogador {
 
     private final String NOME;
-    private Baralho baralho;
     private ArrayList<Carta> cartas;
+    private static int cartaDescarte;
 
     public Jogador(String nome) {
         this.NOME = nome;
@@ -27,6 +27,16 @@ public class Jogador {
     }
     
     public void puxarCartaMaco(){
-        cartas.add(baralho.retornaCarta());
+        cartas.add(Baralho.puxarCarta());
     }
+    public void descartarCarta(int i){
+        cartaDescarte = i;
+        System.out.println("Carta removida: " + cartas.get(i));
+        cartas.remove(i);
+    }
+    
+    public void puxarCartaLixo(){
+        
+    }
+    
 }

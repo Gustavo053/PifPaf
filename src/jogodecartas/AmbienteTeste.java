@@ -12,9 +12,13 @@ package jogodecartas;
 public class AmbienteTeste {
     public static void main(String[] args) {
         Jogo executar = new Jogo();
-        executar.iniciarJogo();
-        executar.distribuirCartas(9);
-        executar.mostrarCartas();
-        executar.puxarCarta();
+        int i = 0;
+        do{
+            executar.iniciarJogo();
+            executar.distribuirCartas(9);
+            executar.mostrarCartas();
+            executar.puxarCarta();
+        }while(i < 8);
+        
     }
 }
