@@ -6,6 +6,7 @@ public class Jogador {
     private final String NOME;
     private ArrayList<Carta> cartas;
     private static int cartaDescarte;
+    private static Carta cartaDescartada;
 
     public Jogador(String nome) {
         this.NOME = nome;
@@ -32,11 +33,13 @@ public class Jogador {
     public void descartarCarta(int i){
         cartaDescarte = i;
         System.out.println("Carta removida: " + cartas.get(i));
+        cartaDescartada = cartas.get(i);
         cartas.remove(i);
     }
-    
     public void puxarCartaLixo(){
-        
+        System.out.println("Carta puxada: " + cartaDescartada);
+        cartas.add(cartaDescartada);
     }
+    
     
 }
