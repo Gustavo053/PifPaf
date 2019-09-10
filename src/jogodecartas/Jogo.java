@@ -7,7 +7,7 @@ public class Jogo {
     private final Scanner entrada = new Scanner(System.in);
     private final Baralho BARALHO;
     private Jogador[] jogadores;
-    int puxar;
+    private int puxar;
     
     public Jogo() {
         BARALHO = new Baralho();
@@ -37,28 +37,27 @@ public class Jogo {
         for (Jogador jogadore : jogadores) {
             jogadore.mostrarCartas();
         }
-    }
+    }   
     
     
-    
-    
-    
-    public void puxarCartaMaco(){
-        System.out.println("entrou pra puxar");
-        
-        for(int i = 0; i < jogadores.length; i++){
-            System.out.println("jogador " + 1 + " puxando");
-            jogadores[i].setCartas(BARALHO.retornaCarta());
+    public void puxarCarta(){
+        for(Jogador jogadore: jogadores){
+            System.out.println("PUXAR MAÇO[1] - PUXAR LIXEIRA[2]: ");
+            int opcao = entrada.nextInt();
+            switch(opcao){
+                case 1:
+                    jogadore.puxarCartaMaco();
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println("Por favor, digite uma opção válida");
+            }
         }
-        
-        
-        
-        
     }
+   
     
-}
- 
-    
+} 
     /*
     public static void main(String[] args) {
         Jogo executar = new Jogo();

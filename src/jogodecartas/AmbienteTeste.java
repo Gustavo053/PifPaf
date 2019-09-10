@@ -15,5 +15,6 @@ public class AmbienteTeste {
         executar.iniciarJogo();
         executar.distribuirCartas(9);
         executar.mostrarCartas();
+        executar.puxarCarta();
     }
 }

@@ -59,11 +59,8 @@ public class Baralho {
     }
     
     public Carta retornaCarta(){
-        Carta ultimaCarta = new Carta("Sem face", "Sem naipe");
-        for(int i = 0; i < CARTAS.length; i++){
-            ultimaCarta = CARTAS[CARTAS.length - contador];
-        }
-        return ultimaCarta;
+        System.out.println("Carta puxada: " + CARTAS[++contador]);
+        return CARTAS[contador];
     }
     
 
