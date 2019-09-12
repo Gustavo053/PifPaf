@@ -7,9 +7,13 @@ public class Jogador {
     private ArrayList<Carta> cartas;
     private static int cartaDescarte;
     private static Carta cartaDescartada;
+    private Carta cartasVencedor;
 
     public Jogador(String nome) {
         this.NOME = nome;
+    }
+    public String getNome(){
+        return this.NOME;
     }
 
     public void setCartas(Carta[] cartas) {
@@ -41,5 +45,57 @@ public class Jogador {
         cartas.add(cartaDescartada);
     }
     
+    public ArrayList<Carta> cartasNaMao(){
+        ArrayList<Carta> cartasJogador = new ArrayList<>();
+        for(int i = 0; i < cartasJogador.size(); i++){
+            cartasJogador.add(cartas.get(i));
+        }
+        return cartasJogador;
+    }
+    
+    public boolean trinca(ArrayList<Carta> cartasJogador){
+        Carta carta1 = new Carta("Sem face", "Sem naipe");
+        Carta carta2 = new Carta("Sem face", "Sem naipe");
+        Carta carta3 = new Carta("Sem face", "Sem naipe");
+        for(int i = 0; i < cartasJogador.size()-1; i++){
+            if(cartasJogador.get(i).getFace().equalsIgnoreCase(cartasJogador.get(i+1).getFace())){
+                carta1 = cartasJogador.get(i);
+                carta2 = cartasJogador.get(i+1);
+            }
+        }
+        for(int i = 0; i < cartasJogador.size()-1; i++){
+            if(carta2.getFace().equalsIgnoreCase(cartasJogador.get(i+1).getFace())){
+                carta3 = cartasJogador.get(i+1);
+            }
+        }
+        
+        //se der erro essa comparação, mudar para comaparar a face só com o ==, sem o método
+        if(carta1.getFace().equalsIgnoreCase(carta2.getFace()) && 
+                carta2.getFace().equalsIgnoreCase(carta3.getFace())){
+            System.out.println("TRINCA");
+            return true;
+        }else{
+            System.out.println("NÃO TRINCA");
+            return false;
+        }
+    }
+    
+    public boolean sequencia(ArrayList<Carta> cartasJogador){
+        Carta carta1 = new Carta("Sem face", "Sem naipe");
+        Carta carta2 = new Carta("Sem face", "Sem naipe");
+        Carta carta3 = new Carta("Sem face", "Sem naipe");
+        for(int i = 0; i < cartasJogador.size()-1; i++){
+            if(cartasJogador.get(i).getNaipe().equalsIgnoreCase(cartasJogador.get(i+1).getNaipe())){
+                carta1 = cartasJogador.get(i);
+                carta2 = cartasJogador.get(i+1);
+            }
+        }
+        for(int i = 0; i < cartasJogador.size()-1; i++){
+            if(carta2.getNaipe().equalsIgnoreCase(cartasJogador.get(i+1).getNaipe())){
+                carta3 = cartasJogador.get(i+1);
+            }
+        }
+        return
+    }
     
 }

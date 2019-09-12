@@ -25,8 +25,6 @@ public class Baralho {
     }
 
     public void embaralhar() {
-        
-        System.out.println("\t\tEMBARALHANDO\n");
         int num, num2;
         Carta temp;
         for (int i = 0; i < CARTAS.length; i++) {

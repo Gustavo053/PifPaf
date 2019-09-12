@@ -36,11 +36,12 @@ public class Jogo {
         for (Jogador jogadore : jogadores) {
             jogadore.mostrarCartas();
         }
-    }   
+    }
     
     
     public void puxarCarta(){
         for(Jogador jogadore: jogadores){
+            System.out.println(" \n\n VEZ DO JOGADOR " + jogadore.getNome());
             System.out.println("PUXAR MAÇO[1] - PUXAR LIXEIRA[2]: ");
             int opcao = entrada.nextInt();
             switch(opcao){
@@ -65,6 +66,21 @@ public class Jogo {
                 default:
                     System.out.println("Por favor, digite uma opção válida");
             }
+        }
+    }
+    public boolean testarVencedor(){
+        int flag = 0;
+        for (Jogador jogadore : jogadores) {
+            if(jogadore.trinca(jogadore.cartasNaMao())){
+                flag = 1;
+            }
+        }
+        if(flag == 1){
+            System.out.println("TRINCOU TRUE");
+            return true;
+        }else{
+            System.out.println("NÃO TRINCOU FALSE");
+            return false;
         }
     }
    
