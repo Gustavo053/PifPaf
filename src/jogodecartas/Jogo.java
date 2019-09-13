@@ -69,19 +69,24 @@ public class Jogo {
         }
     }
     public boolean testarVencedor(){
-        int flag = 0;
+        int flag1 = 0;
+        int flag2 = 0;
         for (Jogador jogadore : jogadores) {
             if(jogadore.trinca(jogadore.cartasNaMao())){
-                flag = 1;
+                flag1 = 1;
+            }
+            if(jogadore.sequencia(jogadore.cartasNaMao())){
+                flag2 = 1;
             }
         }
-        if(flag == 1){
+        if(flag2 == 1){
             System.out.println("TRINCOU TRUE");
             return true;
         }else{
             System.out.println("NÃO TRINCOU FALSE");
             return false;
         }
+        
     }
    
     
