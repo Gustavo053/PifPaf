@@ -78,7 +78,7 @@ public class Jogo {
             i1 = entrada.nextInt();
             i2 = entrada.nextInt();
             i3 = entrada.nextInt();
-            if(jogadore.trincaTest(i1, i2, i3)){
+            if(jogadore.sequencia(i1, i2, i3)){
                 flag1 = 1;
             }
         }

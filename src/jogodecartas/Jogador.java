@@ -53,16 +53,15 @@ public class Jogador {
         return cartasJogador;
     }
     
-    public boolean trincaTest(int i1, int i2, int i3){
+    public boolean trinca(int i1, int i2, int i3){
         int flag = 0;
-        if(cartas.get(i1).getFace().equals(cartas.get(i2).getFace()) 
-                && cartas.get(i2).getFace().equals(cartas.get(i3).getFace())){
+        if(cartas.get(i1).getFace().equals(cartas.get(i2).getFace()) && cartas.get(i2).getFace().equals(cartas.get(i3).getFace())){
             flag = 1;
         }
         if(flag == 1){
             cartas.remove(i1);
-            cartas.remove(i2);
-            cartas.remove(i3);
+            cartas.remove(i2-1);
+            cartas.remove(i3-2);
             return true;
         }else{
             System.out.println("Trinca não aceita \n");
@@ -70,31 +69,43 @@ public class Jogador {
         }
     }
     
-    public boolean trinca(ArrayList<Carta> cartasJogador){
-        Carta carta1 = new Carta("Sem face", "Sem naipe");
-        Carta carta2 = new Carta("Sem face", "Sem naipe");
-        Carta carta3 = new Carta("Sem face", "Sem naipe");
-        for(int i = 0; i < cartasJogador.size()-1; i++){
-            if(cartasJogador.get(i).getFace().equalsIgnoreCase(cartasJogador.get(i+1).getFace())){
-                carta1 = cartasJogador.get(i);
-                carta2 = cartasJogador.get(i+1);
-            }
-        }
-        for(int i = 0; i < cartasJogador.size()-1; i++){
-            if(carta2.getFace().equalsIgnoreCase(cartasJogador.get(i+1).getFace())){
-                carta3 = cartasJogador.get(i+1);
-            }
-        }
+    public boolean sequencia(int i1, int i2, int i3){
+        int flag1 = 0, flag2 = 0, aux;
+        int[] v = new int[3];
         
-        //se der erro essa comparação, mudar para comaparar a face só com o ==, sem o método
-        if(carta1.getFace().equalsIgnoreCase(carta2.getFace()) && 
-                carta2.getFace().equalsIgnoreCase(carta3.getFace())){
-            System.out.println("TRINCA");
+        v[0] = i1;
+        v[1] = i2;
+        v[2] = i3;
+        
+        Arrays.sort(v);
+        
+        i1 = v[0];
+        i2 = v[1];
+        i3 = v[2];
+        
+        if(cartas.get(i1).getNaipe().equals(cartas.get(i2).getNaipe()) && cartas.get(i2).getNaipe().equals(cartas.get(i3).getNaipe())){
+            flag1 = 1;
+        }
+        if(flag1 == 1){
+            if(cartas.get(i1).getValorNumero() == cartas.get(i2).getValorNumero() - 1 && 
+                    cartas.get(i2).getValorNumero() == cartas.get(i3).getValorNumero() -1){
+                
+                cartas.remove(i1);
+                cartas.remove(i2-1);
+                cartas.remove(i3-2);
+                flag2 = 1;
+            }
+        }
+        if(flag2 == 1){
             return true;
         }else{
-            System.out.println("NÃO TRINCA");
+            System.out.println("Não pode fazer sequencia");
             return false;
         }
+    }
+    
+    public Carta acessarCartaUnica(int indice){
+        return cartas.get(indice);
     }
     
 }
