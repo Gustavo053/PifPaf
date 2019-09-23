@@ -18,12 +18,12 @@ public class AmbienteTeste {
         do{
             executar.mostrarCartas();
             executar.puxarCarta();
-            executar.testarVencedor();
             if(executar.testarVencedor()){
                 System.out.println("Deu certo a trinca");
                 break;
             }
         }while(i < 15);
+        executar.mostrarCartas();
         
     }
 }

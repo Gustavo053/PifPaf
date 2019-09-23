@@ -69,17 +69,20 @@ public class Jogo {
         }
     }
     public boolean testarVencedor(){
+        System.out.println("VOCÊ DESEJA TESTAR O JOGO?");
         int flag1 = 0;
         int flag2 = 0;
         for (Jogador jogadore : jogadores) {
-            if(jogadore.trinca(jogadore.cartasNaMao())){
+            System.out.println("Digite os índices: ");
+            int i1, i2, i3;
+            i1 = entrada.nextInt();
+            i2 = entrada.nextInt();
+            i3 = entrada.nextInt();
+            if(jogadore.trincaTest(i1, i2, i3)){
                 flag1 = 1;
             }
-            if(jogadore.sequencia(jogadore.cartasNaMao())){
-                flag2 = 1;
-            }
         }
-        if(flag2 == 1){
+        if(flag1 == 1){
             System.out.println("TRINCOU TRUE");
             return true;
         }else{

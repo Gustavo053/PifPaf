@@ -1,5 +1,7 @@
 package jogodecartas;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Jogador {
 
@@ -22,6 +24,7 @@ public class Jogador {
     }
 
     public void mostrarCartas() {
+        Collections.sort(cartas);
         System.out.println("-----------CARTAS DE " + NOME.toUpperCase() + "----"
                 + "--------------");
         for(int i = 0; i < cartas.size(); i++){
@@ -44,10 +47,27 @@ public class Jogador {
     
     public ArrayList<Carta> cartasNaMao(){
         ArrayList<Carta> cartasJogador = new ArrayList<>();
-        for(int i = 0; i < cartasJogador.size(); i++){
+        for(int i = 0; i < cartas.size(); i++){
             cartasJogador.add(cartas.get(i));
         }
         return cartasJogador;
+    }
+    
+    public boolean trincaTest(int i1, int i2, int i3){
+        int flag = 0;
+        if(cartas.get(i1).getFace().equals(cartas.get(i2).getFace()) 
+                && cartas.get(i2).getFace().equals(cartas.get(i3).getFace())){
+            flag = 1;
+        }
+        if(flag == 1){
+            cartas.remove(i1);
+            cartas.remove(i2);
+            cartas.remove(i3);
+            return true;
+        }else{
+            System.out.println("Trinca não aceita \n");
+            return false;
+        }
     }
     
     public boolean trinca(ArrayList<Carta> cartasJogador){
@@ -75,110 +95,6 @@ public class Jogador {
             System.out.println("NÃO TRINCA");
             return false;
         }
-    }
-    
-    public boolean sequencia(ArrayList<Carta> cartasJogador){
-        int flag = 0;
-        Carta carta1 = new Carta("Sem face", "Sem naipe");
-        Carta carta2 = new Carta("Sem face", "Sem naipe");
-        Carta carta3 = new Carta("Sem face", "Sem naipe");
-        for(int i = 0; i < cartasJogador.size()-1; i++){
-            if(cartasJogador.get(i).getNaipe().equalsIgnoreCase(cartasJogador.get(i+1).getNaipe())){
-                carta1 = cartasJogador.get(i);
-                carta2 = cartasJogador.get(i+1);
-            }
-        }
-        for(int i = 0; i < cartasJogador.size()-1; i++){
-            if(carta2.getNaipe().equalsIgnoreCase(cartasJogador.get(i+1).getNaipe())){
-                carta3 = cartasJogador.get(i+1);
-            }
-        }
-        
-        ArrayList<Carta> x = new ArrayList();
-        x.add(carta1);
-        x.add(carta2);
-        x.add(carta3);
-        int y1, y2, y3;
-        if(carta1.getNaipe().equalsIgnoreCase(carta2.getNaipe()) &&
-                carta2.getNaipe().equalsIgnoreCase(carta3.getNaipe())){
-            switch(carta1.getFace()){
-                case "A":
-                    y1 = 1;
-                    break;
-                case "J":
-                    y1 = 11;
-                    break;
-                case "Q":
-                    y1 = 12;
-                    break;
-                case "K":
-                    y1 = 13;
-                    break;
-                default:
-                    y1 = Integer.parseInt(carta1.getFace()); //Converte String para Integer
-            }
-            switch(carta2.getFace()){
-                case "A":
-                    y2 = 1;
-                    break;
-                case "J":
-                    y2 = 11;
-                    break;
-                case "Q":
-                    y2 = 12;
-                    break;
-                case "K":
-                    y2 = 13;
-                    break;
-                default:
-                    y2 = Integer.parseInt(carta2.getFace()); //Converte String para Integer
-            }
-            switch(carta3.getFace()){
-                case "A":
-                    y3 = 1;
-                    break;
-                case "J":
-                    y3 = 11;
-                    break;
-                case "Q":
-                    y3 = 12;
-                    break;
-                case "K":
-                    y3 = 13;
-                    break;
-                default:
-                    y3 = Integer.parseInt(carta3.getFace()); //Converte String para Integer
-            }
-            
-            /*for(int i = 0; i < x.size(); i++){
-                switch(x.get(i).getFace()){
-                    case "A":
-                        y = 1;
-                        break;
-                    case "J":
-                        y = 11;
-                        break;
-                    case "Q":
-                        y = 12;
-                        break;
-                    case "K":
-                        y = 13;
-                        break;
-                    default:
-                        y = Integer.decode(x.get(i).getFace()); //Converte String para Integer
-                }
-            }*/
-            if(y1 == y2 && y2 == y3){
-                flag = 1;
-            }
-        }
-        if(flag == 1){
-            System.out.println("Sequência TRUE");
-            return true;
-        }else{
-            System.out.println("SEQUENCIA FALSE");
-            return false;
-        }          
     }
     
 }
