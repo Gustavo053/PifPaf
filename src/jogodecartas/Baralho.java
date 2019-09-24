@@ -24,7 +24,7 @@ public class Baralho {
         }
     }
 
-    public void embaralhar() {
+    public void embaralhar() { //Embaralha as cartas
         int num, num2;
         Carta temp;
         for (int i = 0; i < CARTAS.length; i++) {
@@ -36,7 +36,7 @@ public class Baralho {
         }
     }
 
-    public Carta[] distribuirCartas(int qtdCartas) {
+    public Carta[] distribuirCartas(int qtdCartas) { // Distribui as cartas
         System.out.println("------------DISTRIBUINDO BARALHO-----------------");
         this.qtdCartas = qtdCartas;
             
@@ -49,18 +49,18 @@ public class Baralho {
         
         return cartasJogador;
     }
-
-    public void mostrarBaralho() {
+ 
+    public void mostrarBaralho() { //Apresenta o baralho já embaralhado
         System.out.println("------------APRESENTANDO BARALHO-----------------");
         for (Carta carta : CARTAS) {
             System.out.println(carta.toString());
         }
     }
     
-    public static Carta puxarCarta(){
-        System.out.println("Carta puxada: " + CARTAS[++contador]);
+    public static Carta puxarCarta(){ // Puxa a carta do baralho(sendo essa carta, a próxima do baralho)
+        System.out.println("Carta puxada: " + CARTAS[++contador]); //++contador incrementa a próxima carta
         
-        return CARTAS[contador];
+        return CARTAS[contador]; // Retorna a carta na posição do contador(carta seguinte)
     }
    
 }

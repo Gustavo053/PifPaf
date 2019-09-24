@@ -2,7 +2,7 @@ package jogodecartas;
 
 import java.util.Objects;
 
-public class Carta implements Comparable<Carta>{
+public class Carta implements Comparable<Carta>{ //Cria uma interface para comparar o objeto carta
 
     private final String FACE;
     private final String NAIPE;
@@ -12,40 +12,42 @@ public class Carta implements Comparable<Carta>{
         this.NAIPE = naipe;
     }
     
-    public String getFace(){
+    public String getFace(){ //Retorna a face da carta
         return this.FACE;
     }
-    public String getNaipe(){
+    public String getNaipe(){ // Retorna o naipe da carta
         return this.NAIPE;
     }
 
     @Override
-    public String toString() {
+    public String toString() { //Retorna a carta com seus devidos valores
+        /*Esse toString está configurado para exibir determinados valores, como o
+         ÁS. Ou seja, quando a carta tiver valor de faca 1, ele retornará ÁS + a FACE*/
         if(FACE.equals("1")){
-            return "ÁS " + "de " + NAIPE;
+            return "ÁS " + "de " + NAIPE;     
         }else if(FACE.equals("11")){
-            return "J " + "de " + NAIPE; 
+            return "J " + "de " + NAIPE;         
         }else if(FACE.equals("12")){
             return "Q " + "de " + NAIPE;
         }else if(FACE.equals("13")){
-            return "K " + "de " + NAIPE;
+            return "K " + "de " + NAIPE;        
         }else{
-            return FACE + " de " + NAIPE;
+            return FACE + " de " + NAIPE;       
         }
     }
     
-    public int getValorNumero(){
+    public int getValorNumero(){ //Esse método faz a conversão dos valores String para inteiro
         return Integer.decode(FACE); 
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode() { //Método gerado automaticamente para manter o hash individual para cada objeto
         int hash = 7;
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) { //Método de configuração do equals, onde o naipe é configurado
         if (this == obj) {
             return true;
         }
@@ -56,16 +58,16 @@ public class Carta implements Comparable<Carta>{
             return false;
         }
         final Carta other = (Carta) obj;
-        if (!Objects.equals(this.NAIPE, other.NAIPE)) {
-            return false;
+        if (!Objects.equals(this.NAIPE, other.NAIPE)) { //Naipe sendo configurado aqui, para retornar a
+            return false;                               //ordenação dos elementos da lista pelo neipe
         }
         return true;
     }
 
     @Override
-    public int compareTo(Carta o) {
-        if(this.NAIPE.equals(o.NAIPE)){
-            return this.FACE.compareTo(o.FACE);
+    public int compareTo(Carta o) { //Método usado para comparar objetos de acordo com seu naipe e face
+        if(this.NAIPE.equals(o.NAIPE)){ //e assim retornar os valores ordenados na lista de acordo com os
+            return this.FACE.compareTo(o.FACE);//mesmos
         }else{
             return this.NAIPE.compareTo(o.NAIPE);
         }
